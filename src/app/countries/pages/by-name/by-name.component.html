@@ -1,0 +1,45 @@
+<h2>Búsqueda por nombre:</h2>
+
+<br />
+
+<!-- #region | InPut  -->
+<div class="row">
+  <div class="col">
+    <app-country-input
+      (onDebounce)="suggestions($event)"
+      (onEnter)="search($event)"
+      placeholder="Ingrese el nombre del país a buscar"
+    ></app-country-input>
+  </div>
+</div>
+<!-- #endregion -->
+
+<!-- #region | Suggestions -->
+<ul>
+  <li
+    *ngFor="let country of suggestionsCountry"
+    class="list-group-item list-group-item-action"
+  >
+    <a class="nav-link" [routerLink]="['/search/country', country.cca3]">
+      {{ country.name.common }}
+    </a>
+  </li>
+
+  <li
+    class="list-group-item list-group-item-action"
+    (click)="suggestionsSearch(term)"
+  >
+    <a class="nav-link">
+      {{ term }}
+    </a>
+  </li>
+</ul>
+<!-- #endregion -->
+
+<br />
+
+<!-- #region | Table  -->
+<table>
+  <app-country-table [countries]="countries"></app-country-table>
+</table>
+<!-- #endregion -->
