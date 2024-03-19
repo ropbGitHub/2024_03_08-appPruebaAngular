@@ -1,1 +1,52 @@
-<p>by-subregion works!</p>
+<h2>Búsqueda por SubRegión:</h2>
+
+<br />
+
+<!-- #region | Regions & Subregions-->
+<h5>Seleccione la región y luego la subregión</h5>
+
+<div class="row">
+  <div class="col-10">
+    <button
+      (click)="showSubregions(region.key)"
+      *ngFor="let region of regionsAndSubregions | keyvalue"
+      [class]="getClassRegion(region.key)"
+      type="button"
+    >
+      {{ region.key | titlecase }}
+      <i class="bi bi-caret-down-fill"></i>
+    </button>
+  </div>
+
+  <div class="col-2">
+    <button
+      (click)="showSubregions('')"
+      class="btn btn-secondary"
+      type="button"
+    >
+      Limpiar
+      <i class="bi bi-trash3-fill"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <button
+      (click)="searchBySubregions(subregion)"
+      *ngFor="let subregion of getSubregions()"
+      [class]="getClassSubregion(subregion.toString())"
+      class="animate__animated animate__fadeIn"
+      type="button"
+    >
+      {{ subregion }}
+    </button>
+  </div>
+</div>
+<!-- #endregion -->
+
+<!-- #region | Table -->
+<div *ngIf="countries.length > 0">
+  <app-country-table [countries]="countries"></app-country-table>
+</div>
+<!-- #endregion -->

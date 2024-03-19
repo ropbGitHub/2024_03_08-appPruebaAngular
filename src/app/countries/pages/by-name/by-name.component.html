@@ -1,4 +1,4 @@
-<h2>Búsqueda por nombre:</h2>
+<h2>Búsqueda por Nombre:</h2>
 
 <br />
 
@@ -39,7 +39,7 @@
 <br />
 
 <!-- #region | Table  -->
-<table>
+<div *ngIf="countries.length > 0">
   <app-country-table [countries]="countries"></app-country-table>
-</table>
+</div>
 <!-- #endregion -->

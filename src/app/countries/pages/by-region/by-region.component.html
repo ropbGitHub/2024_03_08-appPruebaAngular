@@ -1,1 +1,37 @@
-<p>by-region works!</p>
+<h2>Búsqueda por Región:</h2>
+
+<br />
+
+<!-- #region | Regions -->
+<h5>Seleccione la región</h5>
+
+<div class="row">
+  <div class="col-10">
+    <button
+      (click)="searchByRegion(region)"
+      *ngFor="let region of regions"
+      [class]="getClassRegion(region)"
+      type="button"
+    >
+      {{ region | titlecase }}
+    </button>
+  </div>
+
+  <div class="col-2">
+    <button
+      (click)="searchByRegion('')"
+      type="button"
+      class="btn btn-secondary"
+    >
+      Limpiar
+      <i class="bi bi-trash3-fill"></i>
+    </button>
+  </div>
+</div>
+<!-- #endregion -->
+
+<!-- #region | Table -->
+<div *ngIf="countries.length > 0">
+  <app-country-table [countries]="countries"></app-country-table>
+</div>
+<!-- #endregion -->
